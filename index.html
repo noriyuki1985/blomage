@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BloomEdge｜可愛いに芯を</title>
+  <meta name="description" content="BloomEdge（ブルームエッジ）公式サイト。可愛いに芯を。petal × thorn — 甘さと一本のエッジで日常を凛とさせる。">
+  <meta property="og:title" content="BloomEdge｜可愛いに芯を">
+  <meta property="og:description" content="petal × thorn — 甘さと一本のエッジで日常を凛とさせる。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#F4F1EC; --black:#111111; --gunmetal:#545454; --thistle:#A48FB4; --muted:#7A7A7A;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--ivory); color:var(--black);
+      font-family:'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.7;
+    }
+    a{color:inherit}
+    .wrap{display:flex;flex-direction:column;min-height:100vh}
+    /* ===== header ===== */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:rgba(244,241,236,.66);
+      border-bottom:1px solid rgba(17,17,17,.06);
+    }
+    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo img{height:28px;display:block}
+    .brand{font-family:'Playfair Display', serif;font-weight:700;letter-spacing:.4px}
+    .menu{display:flex;gap:18px}
+    .menu a{font-weight:500;text-decoration:none;opacity:.85}
+    .menu a:hover{opacity:1}
+    /* ===== hero ===== */
+    .hero{
+      display:grid; place-items:center; padding:84px 16px 48px; position:relative;
+      overflow:hidden;
+    }
+    .hero-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    @media (max-width:840px){ .hero-inner{grid-template-columns:1fr;gap:22px} }
+    .hero-copy{padding:10px}
+    .hero-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+    .hero-logo img{height:44px}
+    .title{font-family:'Playfair Display', serif;font-weight:700;font-size:42px;margin:0 0 8px;line-height:1.18}
+    .subtitle{font-size:14px;color:var(--muted);margin:0}
+    .tag{margin-top:14px;display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(17,17,17,.12);border-radius:999px;background:#fff}
+    .divider{
+      position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);
+      background:linear-gradient(180deg, rgba(84,84,84,.0), rgba(84,84,84,.35) 15%, rgba(164,143,180,.7) 50%, rgba(84,84,84,.35) 85%, rgba(84,84,84,.0));
+    }
+    .thorn{position:absolute;left:calc(50% - .5px);top:45%;width:1px;height:96px;background:var(--thistle)}
+    .thorn::before,.thorn::after{
+      content:""; position:absolute; left:-5px; width:10px; height:1px; background:var(--thistle);
+    }
+    .thorn::before{top:24px; transform:rotate(35deg)}
+    .thorn::after{bottom:24px; transform:rotate(-35deg)}
+    .hero-art{position:relative;border:1px dashed rgba(17,17,17,.12);border-radius:16px;background:#fff;min-height:260px;display:grid;place-items:center;padding:18px}
+    .hero-art .ph{color:var(--muted);font-size:14px}
+    /* ===== sections ===== */
+    section{max-width:1100px;margin:0 auto;padding:28px 16px}
+    h2{font-family:'Playfair Display',serif;font-size:24px;margin:0 0 8px}
+    .lead{font-size:16px;color:#2b2b2b;margin:0 0 8px}
+    .note{font-size:13px;color:var(--muted)}
+    /* ===== audio player ===== */
+    .player{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid rgba(17,17,17,.12);border-radius:12px;background:#fff;max-width:560px}
+    .play{appearance:none;border:none;background:var(--black);color:#fff;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+    .play[data-state="pause"]::before{content:"❚❚"}
+    .play[data-state="play"]::before{content:"►";position:relative;left:1px}
+    .time{font-variant-numeric:tabular-nums;color:#333}
+    .bar{flex:1;height:6px;background:#eee;border-radius:999px;position:relative;cursor:pointer}
+    .bar span{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--thistle),#777);border-radius:999px}
+    .caption{font-size:13px;color:var(--muted)}
+    /* ===== footer ===== */
+    footer{padding:28px 16px;color:#444;border-top:1px solid rgba(17,17,17,.08);margin-top:auto}
+    .foot{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+    .small{font-size:12px;color:#666}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="nav" aria-label="トップナビゲーション">
+        <a class="logo" href="#top"><img src="assets/logo.png" alt="BloomEdge ロゴ"><span class="brand">BloomEdge</span></a>
+        <div class="menu">
+          <a href="#about">About</a>
+          <a href="#music">Music</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="キービジュアル">
+        <span class="divider" aria-hidden="true"></span>
+        <span class="thorn" aria-hidden="true"></span>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="hero-logo">
+              <img src="assets/logo.png" alt="BloomEdge">
+              <div>
+                <h1 class="title">可愛いに、芯を。</h1>
+                <p class="subtitle">Edge your bloom — petal × thorn.</p>
+              </div>
+            </div>
+            <p class="lead">
+              甘さは、線で凛とする。BLOOM EDGE は、花びらのやわらかさに一本の“棘”を添えるブランド。
+              量産的な可愛さではなく、あなたの輪郭をそのまま立たせる日常服をつくります。
+            </p>
+            <span class="tag">2025 — First drop coming soon</span>
+          </div>
+          <div class="hero-art" role="img" aria-label="ブランドモチーフ：中心線と棘の記号">
+            <div class="ph">Product images will appear here soon.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="h-about">
+        <h2 id="h-about">About BloomEdge</h2>
+        <p class="lead">BLOOM EDGE（ブルームエッジ）は「petal × thorn」。余白と直線、低彩度に一点のアクセント。</p>
+        <p class="note">Brand values: Quiet defiance／Inclusion over confrontation／Crafted lines &amp; clean finishing.</p>
+      </section>
+
+      <section id="music" aria-labelledby="h-music">
+        <h2 id="h-music">Brand Music</h2>
+        <div class="player" role="group" aria-label="ブランド曲の再生">
+          <button class="play" id="playBtn" aria-label="再生/一時停止" data-state="play"></button>
+          <div class="bar" id="seek"><span></span></div>
+          <div class="time"><span id="cur">0:00</span> / <span id="dur">0:00</span></div>
+        </div>
+        <p class="caption">提供曲を掲載しています。音量にご注意ください。</p>
+        <audio id="audio" preload="auto">
+          <source src="assets/theme.mp3" type="audio/mpeg">
+        </audio>
+      </section>
+
+      <section id="contact" aria-labelledby="h-contact">
+        <h2 id="h-contact">Contact / 運営情報</h2>
+        <p class="lead">運営会社：BloomEdge（ブルームエッジ）</p>
+        <p class="note">発売情報・POP‑UPの最新案内はニュースレターでお知らせします。</p>
+        <p><a href="mailto:hello@bloomedge.example" class="tag">Join newsletter（仮）</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot">
+        <div class="small">© 2025 BloomEdge — All rights reserved.</div>
+        <div class="small">Design language: petal × thorn / Core palette: Ivory · Black · Gunmetal · Thistle</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple audio controls
+    const audio = document.getElementById('audio');
+    const btn = document.getElementById('playBtn');
+    const cur = document.getElementById('cur');
+    const dur = document.getElementById('dur');
+    const seek = document.getElementById('seek');
+    const fill = seek.querySelector('span');
+
+    function fmt(t){
+      if(!isFinite(t)) return '0:00';
+      const m = Math.floor(t/60);
+      const s = Math.floor(t%60).toString().padStart(2,'0');
+      return `${m}:${s}`;
+    }
+    audio.addEventListener('loadedmetadata', ()=>{ dur.textContent = fmt(audio.duration) });
+    audio.addEventListener('timeupdate', ()=>{
+      cur.textContent = fmt(audio.currentTime);
+      const r = (audio.currentTime / (audio.duration||1));
+      fill.style.width = `${r*100}%`;
+    });
+    btn.addEventListener('click', ()=>{
+      if(audio.paused){ audio.play(); btn.dataset.state='pause'; }
+      else{ audio.pause(); btn.dataset.state='play'; }
+    });
+    seek.addEventListener('click', (e)=>{
+      const rect = seek.getBoundingClientRect();
+      const r = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = r * (audio.duration||0);
+    });
+    // Keyboard a11y
+    document.addEventListener('keydown', (e)=>{
+      if(e.code==='Space'){ e.preventDefault(); btn.click(); }
+      if(e.code==='ArrowRight'){ audio.currentTime = Math.min((audio.currentTime||0)+5, audio.duration||0); }
+      if(e.code==='ArrowLeft'){ audio.currentTime = Math.max((audio.currentTime||0)-5, 0); }
+    });
+  </script>
+</body>
+</html>
